@@ -20,10 +20,7 @@ namespace PromotionEngine
         var numberOfPromotions = itemSkuA.Amount / 3;
         var remainder = itemSkuA.Amount % 3;
 
-        if (itemSkuA.Amount == 3)
-        {
-          cart.TotalPrice += (numberOfPromotions * 130) + (remainder * 50);
-        }
+        cart.TotalPrice += (numberOfPromotions * 130) + (remainder * 50);
       }
     }
   }

@@ -60,7 +60,7 @@ namespace PromotionEngine.Tests
         {
           SKU = "A",
           Price = 50m,
-          Amount = 4
+          Amount = 5
         }
       };
 
