@@ -5,7 +5,7 @@ namespace PromotionEngine.Tests
   using System.Collections.Generic;
   using PromotionEngine.Models;
 
-  public class Tests
+  public class ThreeAFixedPricePromotionTests
   {
     [SetUp]
     public void Setup()
