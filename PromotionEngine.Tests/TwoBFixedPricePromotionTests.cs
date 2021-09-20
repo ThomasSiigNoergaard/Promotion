@@ -4,6 +4,7 @@ namespace PromotionEngine.Tests
 {
   using System.Collections.Generic;
   using PromotionEngine.Models;
+  using PromotionEngine.Promotions;
 
   public class TwoBFixedPricePromotionTests
   {
@@ -66,7 +67,7 @@ namespace PromotionEngine.Tests
 
       TwoBFixedPricePromotion promotion = new TwoBFixedPricePromotion();
       promotion.Calculate(cart);
-      Assert.AreEqual(120m, cart.TotalPrice);
+      Assert.AreEqual(75m, cart.TotalPrice);
     }
 
     [Test]

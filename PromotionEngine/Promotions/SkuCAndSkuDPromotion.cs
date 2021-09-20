@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PromotionEngine
+﻿namespace PromotionEngine.Promotions
 {
+  using System.Linq;
   using PromotionEngine.Interfaces;
   using PromotionEngine.Models;
 

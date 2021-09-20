@@ -8,6 +8,7 @@ namespace PromotionEngine.Tests
 {
   using NUnit.Framework;
   using PromotionEngine.Models;
+  using PromotionEngine.Promotions;
 
   class SkuCAndSkuDPromotionTests
   {
