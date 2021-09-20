@@ -26,6 +26,8 @@ namespace PromotionEngine.Tests
         }
       };
 
+      ThreeAFixedPricePromotion promotion = new ThreeAFixedPricePromotion();
+      promotion.Calculate(cart);
       Assert.AreEqual(130m, cart.TotalPrice);
     }
   }
