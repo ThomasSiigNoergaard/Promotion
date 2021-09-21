@@ -1,11 +1,10 @@
 using NUnit.Framework;
+using System.Collections.Generic;
+using PromotionEngine.Models;
+using PromotionEngine.Promotions;
 
 namespace PromotionEngine.Tests
 {
-  using System.Collections.Generic;
-  using PromotionEngine.Models;
-  using PromotionEngine.Promotions;
-
   public class ThreeAFixedPricePromotionTests
   {
     [SetUp]
