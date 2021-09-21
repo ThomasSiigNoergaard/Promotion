@@ -17,19 +17,27 @@
         {
           var numberOfPromotions = itemSkuC.Amount;
           var remainingDItems = itemSkuD.Amount - itemSkuC.Amount;
-          cart.TotalPrice = (numberOfPromotions * 30) + (remainingDItems * 15);
+          cart.TotalPrice = (numberOfPromotions * 30);
+          itemSkuD.ItemsPromoted = itemSkuD.Amount - remainingDItems;
+          itemSkuC.ItemsPromoted = itemSkuC.Amount;
         }
         else if(itemSkuD.Amount < itemSkuC.Amount)
         {
           var numberOfPromotions = itemSkuD.Amount;
-          var remainingDItems = itemSkuC.Amount - itemSkuD.Amount;
-          cart.TotalPrice = (numberOfPromotions * 30) + (remainingDItems * 20);
+          var remainingCItems = itemSkuC.Amount - itemSkuD.Amount;
+          cart.TotalPrice = (numberOfPromotions * 30);
+          itemSkuC.ItemsPromoted = itemSkuC.Amount - remainingCItems;
+          itemSkuD.ItemsPromoted = itemSkuD.Amount;
         }
         else
         {
           var numberOfPromotions = itemSkuC.Amount;
           cart.TotalPrice = (numberOfPromotions * 30);
+          itemSkuD.ItemsPromoted = itemSkuC.ItemsPromoted = numberOfPromotions;
         }
+
+        itemSkuD.PromotionApplied = true;
+        itemSkuC.PromotionApplied = true;
       }
     }
   }

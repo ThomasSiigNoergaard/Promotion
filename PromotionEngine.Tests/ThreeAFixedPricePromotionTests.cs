@@ -32,7 +32,7 @@ namespace PromotionEngine.Tests
       promotion.Calculate(cart);
       Assert.AreEqual(130m, cart.TotalPrice);
 
-      Assert.AreEqual(0, cart.Items.Where(x => !x.PromotionApplied));
+      Assert.IsEmpty(cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -52,7 +52,7 @@ namespace PromotionEngine.Tests
       ThreeAFixedPricePromotion promotion = new ThreeAFixedPricePromotion();
       promotion.Calculate(cart);
       Assert.AreEqual(260m, cart.TotalPrice);
-      Assert.AreEqual(0, cart.Items.Where(x => !x.PromotionApplied));
+      Assert.IsEmpty(cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -73,7 +73,7 @@ namespace PromotionEngine.Tests
       promotion.Calculate(cart);
       Assert.AreEqual(130m, cart.TotalPrice);
 
-      Assert.AreEqual(2, cart.Items.Where(x => !x.PromotionApplied));
+      Assert.IsEmpty(cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -94,7 +94,7 @@ namespace PromotionEngine.Tests
       promotion.Calculate(cart);
       Assert.AreEqual(0m, cart.TotalPrice);
 
-      Assert.AreEqual(2, cart.Items.Where(x => !x.PromotionApplied));
+      Assert.IsNotEmpty(cart.Items.Where(x => !x.PromotionApplied));
     }
   }
 }

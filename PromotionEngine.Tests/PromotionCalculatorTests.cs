@@ -53,12 +53,12 @@ namespace PromotionEngine.Tests
       };
 
       PromotionCalculator promotion = new PromotionCalculator(Promotions);
-      var calculatePrice = promotion.CalculatePrice(cart);
+      var calculatedPromotion = promotion.CalculatePrice(cart);
 
-      Assert.AreEqual(100, calculatePrice);
-      Assert.AreEqual(cart.TotalPrice, cart.TotalPriceWithoutDiscount);
+      Assert.AreEqual(0, calculatedPromotion);
+      Assert.AreEqual(100, cart.TotalPriceWithoutDiscount);
 
-      Assert.AreEqual(3, cart.Items.Where(x => !x.PromotionApplied));
+      Assert.AreEqual(3, cart.Items.Where(x => !x.PromotionApplied)?.Count());
     }
   }
 }

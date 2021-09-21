@@ -1,4 +1,5 @@
 ﻿using PromotionEngine.Models;
+using System.Linq;
 
 namespace PromotionEngine.Promotions
 {
@@ -12,9 +13,13 @@ namespace PromotionEngine.Promotions
       if (itemToGetPromotion != null)
       {
         var numberOfPromotions = itemToGetPromotion.Amount / amountToGetPromotion;
-        var remainder = itemToGetPromotion.Amount % amountToGetPromotion;
+        itemToGetPromotion.ItemsPromoted = numberOfPromotions * amountToGetPromotion;
+        result = (numberOfPromotions * fixedPrice);
 
-        result = (numberOfPromotions * fixedPrice) + (remainder * itemToGetPromotion.Price);
+        if (itemToGetPromotion.ItemsPromoted > 0)
+        {
+          itemToGetPromotion.PromotionApplied = true;
+        }
       }
 
       return result;
