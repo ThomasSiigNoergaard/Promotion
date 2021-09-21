@@ -2,6 +2,8 @@
 
 namespace PromotionEngine.Tests
 {
+  using System.Linq;
+  using System.Security.Cryptography.X509Certificates;
   using NUnit.Framework;
   using PromotionEngine.Models;
   using PromotionEngine.Promotions;
@@ -36,6 +38,7 @@ namespace PromotionEngine.Tests
       SkuCAndSkuDPromotion promotion = new SkuCAndSkuDPromotion();
       promotion.Calculate(cart);
       Assert.AreEqual(30m, cart.TotalPrice);
+      Assert.AreEqual(0, cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -61,6 +64,7 @@ namespace PromotionEngine.Tests
       SkuCAndSkuDPromotion promotion = new SkuCAndSkuDPromotion();
       promotion.Calculate(cart);
       Assert.AreEqual(60m, cart.TotalPrice);
+      Assert.AreEqual(0, cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -85,7 +89,9 @@ namespace PromotionEngine.Tests
 
       SkuCAndSkuDPromotion promotion = new SkuCAndSkuDPromotion();
       promotion.Calculate(cart);
-      Assert.AreEqual(50m, cart.TotalPrice);
+      Assert.AreEqual(30m, cart.TotalPrice);
+
+      Assert.AreEqual(1, cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -110,7 +116,9 @@ namespace PromotionEngine.Tests
 
       SkuCAndSkuDPromotion promotion = new SkuCAndSkuDPromotion();
       promotion.Calculate(cart);
-      Assert.AreEqual(45m, cart.TotalPrice);
+      Assert.AreEqual(30m, cart.TotalPrice);
+
+      Assert.AreEqual(1, cart.Items.Where(x => !x.PromotionApplied));
     }
   }
 }
