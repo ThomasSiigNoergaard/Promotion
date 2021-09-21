@@ -57,6 +57,8 @@ namespace PromotionEngine.Tests
 
       Assert.AreEqual(100, calculatePrice);
       Assert.AreEqual(cart.TotalPrice, cart.TotalPriceWithoutDiscount);
+
+      Assert.AreEqual(3, cart.Items.Where(x => !x.PromotionApplied));
     }
   }
 }

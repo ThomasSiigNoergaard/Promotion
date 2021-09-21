@@ -2,9 +2,11 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using PromotionEngine.Models;
 using PromotionEngine.Promotions;
+using System.Linq;
 
 namespace PromotionEngine.Tests
 {
+
   public class ThreeAFixedPricePromotionTests
   {
     [SetUp]
@@ -29,6 +31,8 @@ namespace PromotionEngine.Tests
       ThreeAFixedPricePromotion promotion = new ThreeAFixedPricePromotion();
       promotion.Calculate(cart);
       Assert.AreEqual(130m, cart.TotalPrice);
+
+      Assert.AreEqual(0, cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -48,6 +52,7 @@ namespace PromotionEngine.Tests
       ThreeAFixedPricePromotion promotion = new ThreeAFixedPricePromotion();
       promotion.Calculate(cart);
       Assert.AreEqual(260m, cart.TotalPrice);
+      Assert.AreEqual(0, cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -66,7 +71,9 @@ namespace PromotionEngine.Tests
 
       ThreeAFixedPricePromotion promotion = new ThreeAFixedPricePromotion();
       promotion.Calculate(cart);
-      Assert.AreEqual(230m, cart.TotalPrice);
+      Assert.AreEqual(130m, cart.TotalPrice);
+
+      Assert.AreEqual(2, cart.Items.Where(x => !x.PromotionApplied));
     }
 
     [Test]
@@ -85,7 +92,9 @@ namespace PromotionEngine.Tests
 
       ThreeAFixedPricePromotion promotion = new ThreeAFixedPricePromotion();
       promotion.Calculate(cart);
-      Assert.AreEqual(100m, cart.TotalPrice);
+      Assert.AreEqual(0m, cart.TotalPrice);
+
+      Assert.AreEqual(2, cart.Items.Where(x => !x.PromotionApplied));
     }
   }
 }
