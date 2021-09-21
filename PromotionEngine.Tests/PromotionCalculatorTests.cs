@@ -102,7 +102,7 @@ namespace PromotionEngine.Tests
         {
           SKU = "A",
           Price = 50m,
-          Amount = 5
+          Amount = 3
         },
         new Item()
         {
@@ -115,15 +115,21 @@ namespace PromotionEngine.Tests
           SKU = "C",
           Price = 20,
           Amount = 1
+        },
+        new Item()
+        {
+          SKU = "D",
+          Price = 15,
+          Amount = 1
         }
       };
 
       PromotionCalculator promotion = new PromotionCalculator(Promotions);
       var calculatedPrice = promotion.CalculatePrice(cart);
 
-      Assert.AreEqual(370, calculatedPrice);
-      Assert.AreEqual(420, cart.TotalPriceWithoutDiscount);
-      Assert.AreEqual(1, cart.Items.Where(x => !x.PromotionApplied)?.Count());
+      Assert.AreEqual(280, calculatedPrice);
+      Assert.AreEqual(335, cart.TotalPriceWithoutDiscount);
+      Assert.IsEmpty(cart.Items.Where(x => !x.PromotionApplied));
     }
   }
 }
