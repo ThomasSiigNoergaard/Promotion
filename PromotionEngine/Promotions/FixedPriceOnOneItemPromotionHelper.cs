@@ -10,7 +10,7 @@ namespace PromotionEngine.Promotions
 
   public class FixedPriceOnOneItemPromotionHelper
   {
-    public decimal Calculate(Cart cart, Item itemToGetPromotion, int amountToGetPromotion, decimal fixedPrice)
+    public decimal Calculate(Item itemToGetPromotion, int amountToGetPromotion, decimal fixedPrice)
     {
       decimal result = default;
 

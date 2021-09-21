@@ -11,7 +11,7 @@
       var itemSkuA = cart.Items.FirstOrDefault(item => item.SKU.Equals("A"));
 
       FixedPriceOnOneItemPromotionHelper fixedPriceOnOneItemPromotionHelper = new FixedPriceOnOneItemPromotionHelper();
-      var calculatedPrice = fixedPriceOnOneItemPromotionHelper.Calculate(cart, itemSkuA, 3, 130);
+      var calculatedPrice = fixedPriceOnOneItemPromotionHelper.Calculate(itemSkuA, 3, 130);
 
       cart.TotalPrice += calculatedPrice;
     }

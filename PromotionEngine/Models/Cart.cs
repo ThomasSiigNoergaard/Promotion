@@ -11,5 +11,7 @@ namespace PromotionEngine.Models
     public List<Item> Items { get; set; }
 
     public decimal TotalPrice { get; set; }
+
+    public decimal TotalPriceWithoutDiscount => Items.Sum(x => x.Price * x.Amount);
   }
 }
