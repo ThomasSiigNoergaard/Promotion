@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using PromotionEngine.Models;
 using PromotionEngine.Promotions;
@@ -59,6 +56,74 @@ namespace PromotionEngine.Tests
       Assert.AreEqual(100, cart.TotalPriceWithoutDiscount);
 
       Assert.AreEqual(3, cart.Items.Where(x => !x.PromotionApplied)?.Count());
+    }
+
+    [Test]
+    public void DiscountScenarioB()
+    {
+      Cart cart = new Cart();
+      cart.Items = new List<Item>()
+      {
+        new Item()
+        {
+          SKU = "A",
+          Price = 50m,
+          Amount = 5
+        },
+        new Item()
+        {
+          SKU = "B",
+          Price = 30,
+          Amount = 5
+        },
+        new Item()
+        {
+          SKU = "C",
+          Price = 20,
+          Amount = 1
+        }
+      };
+
+      PromotionCalculator promotion = new PromotionCalculator(Promotions);
+      var calculatedPrice = promotion.CalculatePrice(cart);
+
+      Assert.AreEqual(370, calculatedPrice);
+      Assert.AreEqual(420, cart.TotalPriceWithoutDiscount);
+      Assert.AreEqual(1, cart.Items.Where(x => !x.PromotionApplied)?.Count());
+    }
+
+    [Test]
+    public void DiscountScenarioC()
+    {
+      Cart cart = new Cart();
+      cart.Items = new List<Item>()
+      {
+        new Item()
+        {
+          SKU = "A",
+          Price = 50m,
+          Amount = 5
+        },
+        new Item()
+        {
+          SKU = "B",
+          Price = 30,
+          Amount = 5
+        },
+        new Item()
+        {
+          SKU = "C",
+          Price = 20,
+          Amount = 1
+        }
+      };
+
+      PromotionCalculator promotion = new PromotionCalculator(Promotions);
+      var calculatedPrice = promotion.CalculatePrice(cart);
+
+      Assert.AreEqual(370, calculatedPrice);
+      Assert.AreEqual(420, cart.TotalPriceWithoutDiscount);
+      Assert.AreEqual(1, cart.Items.Where(x => !x.PromotionApplied)?.Count());
     }
   }
 }
